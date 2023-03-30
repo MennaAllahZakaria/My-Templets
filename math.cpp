@@ -13,21 +13,96 @@ bool prime(ll n){// o(log(n))
   return true ;
  
 }
-//==================================================
+//--------------------------------------------------------\\
 
 bool isPerfectSquare(ll x)
 {
   return  ((sqrt(n) == (int)sqrt(n))?true:false); 
    
 }
-//==================================================
+//--------------------------------------------------------\\
 
 bool isPowerOfTwo(ll x)
 {
    return (x && (!(x&(x-1))));
 }
+
+//--------------------------------------------------------\\
+// نصف القطر 
+double n_q(int x1,int y1,int x2,int y2){
+ return sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))/2;
+}
+//--------------------------------------------------------\\
+  // area of a tringle 
+ double area_tringle(int a,int b,int c){
+ double s= (a+b+c)/2;
+  double A= s*(s-a) *(s-b) *(s-c);
  
-//==================================================
+  return sqrt(A);
+ }
+  
+//--------------------------------------------------------\\
+// cheak is a tringle or not
+bool is_tri(int a,int b, int c){
+  if ((a+b>c) && (a+c>b) && (b+c>a)  && (a && b && c)   ) return true;
+  return false;
+}
+//--------------------------------------------------------\\
+ // Check if three points in the same line
+
+    bool is_same_line(ll x1, ll y1, ll x2, ll y2, ll x3, ll y3){
+        return (y2 - y1) * (x3 - x1) == (y3 - y1) * (x2 - x1);
+    }
+
+//--------------------------------------------------------\\
+
+
+// Convert Decimal to any base
+
+    string decimal_to_any_base(ll decimal, ll base){
+        if(decimal == 0) return "0";
+        string num = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string result;
+        do{
+            result.push_back(num[decimal % base]);
+            decimal /= base;
+        }while(decimal != 0);
+        return string(result.rbegin(), result.rend());
+    }
+    
+
+//--------------------------------------------------------\\
+// Convert any base to decimal
+
+    ll  any_base_to_decimal(string str, int base) {
+        auto val = [](char c){
+            return (c >= '0' && c <= '9' ? (int) c - '0' : (int) c - 'A' + 10);
+        };
+        ll len = sz(str), power = 1, num = 0, i;
+        for (i = len - 1; i >= 0; i--) {
+            num += val(str[i]) * power;
+            power = power * base;
+        }
+        return num;
+    }
+
+
+//--------------------------------------------------------\\
+// prind decimal to binary directly
+ void db(ll n) 
+{
+  
+	if(n==0)
+		return void(cout<<"0") ;
+	else 
+	{
+		db(n/2);
+		cout<<n%2;
+	}
+}
+
+ 
+//--------------------------------------------------------\\
 // fibonatci
 ll fib(ll n) { // o(2^n)
     if (n == 1 || n==2) return 1;
@@ -38,13 +113,13 @@ ll fib(ll n) { // o(2^n)
     return  (n == 1 || n==2 ?1: fib(n - 1) + fib(n - 2)) ;
    
 }
-//======================================================\\
+//--------------------------------------------------------\\
   double slope(double x1, double y1, double x2, double y2){
         if(x2 - x1 == 0) return INT_MAX; // divisble by zero 
         return (y2 - y1) / (x2 - x1);
     }
 
-//======================================================\\    
+//--------------------------------------------------------\\    
 //  Fibonacci from 1 to n
 t1=0;   t2=1;
 for (int i = 1; i <= n; ++i) {
@@ -81,7 +156,7 @@ ll factorial(ll n) {
         }
          return ( mat.size()&1?sum-mat[mat.size()/2][mat.size()/2]:sum); 
     }
-//===========================================
+//--------------------------------------------------------\\
 
 
 // summation of n
@@ -89,16 +164,16 @@ ll sum(ll  n){
   return n*(n+1) /2;
 
 }
-//===============================
+//--------------------------------------------------------\\
 ll count_arismatic(ll a1,ll an,ll n){ //o(n)
   return ((a1+an)*n)/2;
 }
 
-//-------------------------------------------------
+//--------------------------------------------------------\\
 ll count_arismatic(ll a1,ll n,ll d){
   return (((2*a1+(n-1)*d)*n)/2;
 }
-//=======================================
+//--------------------------------------------------------\\
 
 // sum digets in string 
 ll sum(string s){
@@ -120,13 +195,14 @@ ll sum(string s){
     return b == 0 ? a : gcd(b, a % b);
 }
 
-//________________________________________
+//--------------------------------------------------------\\
 // LCD 
 ll LCD (int n,int m){ 
 
  return n/gcd(n,m) *m;
 }
-//---------------------------------------------------------\\
+//--------------------------------------------------------\\
+          
  // fact of max of n,m
 ll fact[20];
 void build_fact(){
@@ -136,7 +212,7 @@ void build_fact(){
   }
 }
 
-
+//--------------------------------------------------------\\
 
 // ncr and npr 
 ll nCr(ll n,ll r){
@@ -152,7 +228,7 @@ ll ncr(int n,int r){
  return ncr(n-1,r-1) + ncr ( n-1,r );
 }
 
-//---------------------------------------------------------\\
+//--------------------------------------------------------\\
 
   // Permutation
 ll nPr(ll n,ll r){
