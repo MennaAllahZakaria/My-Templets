@@ -1,6 +1,9 @@
 //         اللهم لا سهل الا ما جعلته سهلا و انت تجعل الصعب ان شئت سهل        
  #include <bits/stdc++.h> 
- 
+ #define ll                            long long 
+ #define nl                            "\n"
+ #define sz(x)                          int(x.size())
+
  // to determind its a prime or not 
 
 bool prime(ll n){// o(log(n))
@@ -67,7 +70,8 @@ bool is_tri(int a,int b, int c){
             result.push_back(num[decimal % base]);
             decimal /= base;
         }while(decimal != 0);
-        return string(result.rbegin(), result.rend());
+       reverse(result.rbegin(), result.rend());
+        return result;
     }
     
 
@@ -91,7 +95,6 @@ bool is_tri(int a,int b, int c){
 // prind decimal to binary directly
  void db(ll n) 
 {
-  
 	if(n==0)
 		return void(cout<<"0") ;
 	else 
@@ -105,6 +108,7 @@ bool is_tri(int a,int b, int c){
 //--------------------------------------------------------\\
 // fibonatci
 ll fib(ll n) { // o(2^n)
+	
     if (n == 1 || n==2) return 1;
     return fib(n - 1) + fib(n - 2);
 }
@@ -242,7 +246,7 @@ ll nPr(ll n,ll r){
     ll nPr(ll n, ll r){
         if(r > n) return 0;
         ll npr = 1;
-        while(r-- > 0)
+        while(r-- )
             npr *= n--;
         return npr;
     }
